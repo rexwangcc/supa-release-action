@@ -1,7 +1,13 @@
 name: 'SupaRelease'
 description: 'Release workflow based off of Supabase'
 inputs:
-  table_name:
+  supabase-url:
+    description: 'URL of the supabase instance to use'
+    required: true
+  supabase-key:
+    description: 'API key of the supabase instance to use'
+    required: true
+  table-name:
     description: 'DB table name in supabase to use for all operations'
     required: true
     default: 'released_versions'
