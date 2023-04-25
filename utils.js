@@ -1,10 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
 import isUndefined from 'lodash/isUndefined';
-
-const supabaseUrl = 'https://kvfkxppilmuxpolsfqmc.supabase.co'
-const supabaseKey = process.env.SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
-
 
 /**
  * @returns {Promise<string>} The most recent release candidate, or null if there was an error.

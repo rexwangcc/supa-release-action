@@ -1,3 +1,4 @@
+import { createClient } from '@supabase/supabase-js'
 import * as core from '@actions/core';
 import isNull from 'lodash/isNull';
 import { getMostRecentReleaseCandidateNumber, writeAReleaseRecord } from './utils';
