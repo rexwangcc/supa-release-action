@@ -27,5 +27,5 @@ outputs:
   most_recent_candidate:
     description: 'The most recent release candidate'
 runs:
-  using: 'node18'
+  using: 'node16'
   main: 'dist/index.js'
