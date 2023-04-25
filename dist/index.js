@@ -18419,22 +18419,16 @@ var __webpack_exports__ = {};
 // ESM COMPAT FLAG
 __nccwpck_require__.r(__webpack_exports__);
 
+// EXTERNAL MODULE: ./node_modules/@supabase/supabase-js/dist/main/index.js
+var main = __nccwpck_require__(1206);
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(2186);
 // EXTERNAL MODULE: ./node_modules/lodash/isNull.js
 var isNull = __nccwpck_require__(7577);
-// EXTERNAL MODULE: ./node_modules/@supabase/supabase-js/dist/main/index.js
-var main = __nccwpck_require__(1206);
 // EXTERNAL MODULE: ./node_modules/lodash/isUndefined.js
 var isUndefined = __nccwpck_require__(2825);
 var isUndefined_default = /*#__PURE__*/__nccwpck_require__.n(isUndefined);
 ;// CONCATENATED MODULE: ./utils.js
-
-
-
-const supabaseUrl = 'https://kvfkxppilmuxpolsfqmc.supabase.co'
-const supabaseKey = process.env.SUPABASE_KEY
-const supabase = (0,main.createClient)(supabaseUrl, supabaseKey)
 
 
 /**
@@ -18502,6 +18496,7 @@ async function writeAReleaseRecord(supabaseClient, tableName, {
 
 
 
+
 // most @actions toolkit packages have async methods
 async function run() {
   try {
@@ -18509,7 +18504,7 @@ async function run() {
     const supabaseUrl = core.getInput('supabase-url');
     const supabaseKey = core.getInput('supabase-key');
     core.setSecret('supabase-key');
-    const supabaseClient = createClient(supabaseUrl, supabaseKey);
+    const supabaseClient = (0,main.createClient)(supabaseUrl, supabaseKey);
 
     // common inputs
     const tableName = core.getInput('table-name');
