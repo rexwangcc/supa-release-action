@@ -24,3 +24,4 @@ jobs:
       with:
         supabase-url: 'https://bogus-url'
         supabase-key: 'bogus-secret'
+        operation: query
