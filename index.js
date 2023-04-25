@@ -8,7 +8,7 @@ async function run() {
     // credential inputs and initialize supabase client
     const supabaseUrl = core.getInput('supabase-url');
     const supabaseKey = core.getInput('supabase-key');
-    core.setSecret('supabase-key');
+    // core.setSecret('supabase-key');
     const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
     // common inputs
