@@ -1,13 +1,31 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'SupaRelease'
+description: 'Release workflow based off of Supabase'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  table_name:
+    description: 'DB table name in supabase to use for all operations'
     required: true
-    default: '1000'
+    default: 'released_versions'
+  operation:
+    description: 'operation to perform on the table, one of: {insert, query}'
+    required: true
+  name:
+    description: 'name of the service to insert or query, e.g. my-app'
+    required: false
+  version:
+    description: 'version of the release to insert or query, e.g. 0.5.0'
+    required: false
+  candidate:
+    description: 'candidate of the release to insert in MMDDHHmm, e.g. 04251812'
+    required: false
+  region:
+    description: 'fully-qualified region of the release to insert or query, e.g. aws-us-east-1'
+    required: false
+  namespace:
+    description: 'namespace of the release to insert or query, one of: {staging, prod}'
+    required: false
 outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  most_recent_candidate:
+    description: 'The most recent release candidate'
 runs:
   using: 'node16'
   main: 'dist/index.js'
