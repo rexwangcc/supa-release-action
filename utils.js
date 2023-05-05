@@ -1,4 +1,5 @@
 import isUndefined from 'lodash/isUndefined';
+import isEmpty from 'lodash/isEmpty';
 
 /**
  * @returns {Promise<string>} The most recent release candidate, or null if there was an error.
@@ -12,16 +13,19 @@ async function getMostRecentReleaseCandidateNumber(supabaseClient, tableName, {
   let query = supabaseClient
     .from(tableName)
     .select('candidate')
-    .order('candidate', { ascending: false })
-    .limit(1)
 
-  if (!isUndefined(name)) query = query.eq('name', name)
-  if (!isUndefined(version)) query = query.eq('version', version)
-  if (!isUndefined(region)) query = query.eq('region', region)
-  if (!isUndefined(namespace)) query = query.eq('namespace', namespace)
+  if (!isUndefined(name) && !isEmpty(name)) query = query.eq('name', name)
+  if (!isUndefined(version) && !isEmpty(version)) query = query.eq('version', version)
+  if (!isUndefined(region) && !isEmpty(region)) query = query.eq('region', region)
+  if (!isUndefined(namespace) && !isEmpty(namespace)) query = query.eq('namespace', namespace)
+
+  query.order('candidate', { ascending: false })
+    .limit(1)
 
   try {
     const { data, queryError } = await query;
+    console.info('Query fetched raw result:', data)
+
     if (queryError) {
       console.error('Error fetching most recent candidate:', queryError);
       throw queryError;
